@@ -70,7 +70,7 @@ A full technical report is included with:
 - Result interpretation
 
 Two stage Miller Amp.pdf  
-`./Two%20stage%20Miller%20Amp.pdf`
+* [**Two stage Miller Amp.pdf**](./Two%20stage%20Miller%20Amp.pdf)
 
 ---
 
