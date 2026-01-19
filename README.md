@@ -1,35 +1,89 @@
 # Two-Stage Miller Operational Amplifier Design
 
 ## Project Overview
-[cite_start]This repository contains the design, simulation, and optimization of a **Two-Stage Miller CMOS Operational Amplifier**, implemented using **Cadence Virtuoso**[cite: 1, 37, 72]. [cite_start]The project focuses on achieving high stability and gain through precise transistor sizing and frequency compensation using the Miller effect[cite: 14, 19, 21].
+This repository presents the design, simulation, and optimization of a Two-Stage Miller CMOS Operational Amplifier, implemented in Cadence Virtuoso.
+
+The project focuses on achieving high open-loop gain, robust stability, and optimal bandwidth through careful transistor sizing and classical Miller frequency compensation, while comparing theoretical design formulas with post-layout simulation behavior.
+
+---
 
 ## Key Specifications & Performance
-* [cite_start]**Open-Loop Gain:** 72.07 dB[cite: 165].
-* [cite_start]**Phase Margin (PM):** 62.94° (Meeting the target of >60° for stability)[cite: 164].
-* [cite_start]**Unity Gain Bandwidth (UGB):** Optimized at ~2.14 MHz[cite: 125, 126].
-* [cite_start]**Power Supply:** 1.8V[cite: 10, 25].
-* [cite_start]**Bias Current (Iref):** 2 μA, selected for optimal voltage headroom[cite: 26, 35].
-* [cite_start]**Output Load:** 1 pF[cite: 16, 127].
 
-## Design Highlights
-* [cite_start]**Architecture:** NMOS differential pair input stage followed by a common-source second stage[cite: 1, 15].
-* [cite_start]**Compensation Strategy:** Implementation of Miller capacitance (Cmiller) for pole-splitting and improved stability[cite: 19, 22].
-* [cite_start]**Optimization:** Through iterative simulation, an optimal **2.5pF Miller capacitor** was selected to maximize bandwidth and settling time[cite: 125, 127].
-* [cite_start]**Analysis:** The design compares empirical results with classical theoretical formulas (Sansen), highlighting the adjustments needed for modern short-channel transistor characteristics[cite: 78, 134, 135, 136].
+| Parameter | Value |
+|---------|-------|
+| Open-Loop Gain | 72.07 dB |
+| Phase Margin (PM) | 62.94° |
+| Unity Gain Bandwidth (UGB) | ~2.14 MHz |
+| Supply Voltage | 1.8 V |
+| Bias Current (Iref) | 2 µA |
+| Output Load Capacitance | 1 pF |
+| Miller Compensation Capacitor | 2.5 pF |
 
-## Analysis Included
-* [cite_start]**DC Analysis:** Verified operating points and identified a robust saturation region between 632mV and 1.79V[cite: 43, 50].
-* [cite_start]**Transient Response:** Step response characterization across various Cmiller values to analyze underdamped vs. overdamped behavior[cite: 72, 79, 139].
-* [cite_start]**Frequency Analysis (Bode Plot):** Magnitude and phase characterization to verify stability margins and open-loop gain[cite: 155, 156, 162].
+Phase margin exceeds the 60° stability target.  
+Bias current selected to ensure sufficient voltage headroom.
+
+---
+
+## Architecture & Design Highlights
+
+- Topology
+  - NMOS differential input pair
+  - Common-source second gain stage
+
+- Frequency Compensation
+  - Miller capacitor inserted between the first-stage output and second-stage input
+  - Enables pole-splitting and improves closed-loop stability
+
+- Optimization Process
+  - Iterative simulations across multiple Miller capacitor values
+  - 2.5 pF chosen as the optimal trade-off between phase margin, bandwidth, and settling behavior
+
+- Theory vs. Practice
+  - Classical Sansen-based formulas used as a baseline
+  - Adjustments required due to short-channel effects and modern CMOS non-idealities
+
+---
+
+## Analysis Performed
+
+### DC Analysis
+- Verified correct biasing and operating points
+- Robust saturation region observed between 632 mV and 1.79 V
+
+### Transient Analysis
+- Step response evaluated for multiple Cmiller values
+- Comparison between underdamped and overdamped responses
+
+### AC / Frequency Analysis
+- Bode magnitude and phase plots
+- Extraction of open-loop gain, unity-gain frequency, and phase margin
+
+---
 
 ## Documentation
-For a detailed technical breakdown, including all schematics, simulation setups, and in-depth result analysis, please refer to the full project report:
-* [**Two stage Miller Amp.pdf**](./Two%20stage%20Miller%20Amp.pdf)
+
+A full technical report is included with:
+- Schematics
+- Simulation setups
+- Parameter sweeps
+- Theoretical derivations
+- Result interpretation
+
+Two stage Miller Amp.pdf  
+`./Two%20stage%20Miller%20Amp.pdf`
+
+---
 
 ## Tools Used
-* [cite_start]**Cadence Virtuoso** – Schematic Editor[cite: 1, 5].
-* [cite_start]**Spectre / Maestro** – Simulation & Results[cite: 30, 80].
-* [cite_start]**ViVA** – Waveform Analysis[cite: 37, 121].
-* [cite_start]**Cadence Virtuoso** (Schematic Editor)[cite: 1, 5].
-* [cite_start]**Spectre / Maestro** (Simulation & Results)[cite: 30, 80].
-* [cite_start]**ViVA** (Waveform Analysis)[cite: 37, 121].
+
+- Cadence Virtuoso – Schematic capture
+- Spectre / Maestro – Simulation and analysis
+- ViVA – Waveform visualization and measurement
+
+---
+
+## Key Takeaways
+
+- Complete analog IC design flow from theory to simulation
+- Stability-driven design decisions in low-power operational amplifiers
+- Clear illustration of the gap between textbook models and real CMOS behavior
